@@ -1,0 +1,1 @@
+web gunicorn insu.wsgi:application --log-file -

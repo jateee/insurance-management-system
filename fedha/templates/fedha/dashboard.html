@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #00b7ff;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #007bff;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        /* Link Styling */
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 1.1em;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Logout Button */
+        .logout {
+            display: inline-block;
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            margin-top: 30px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1.1em;
+        }
+
+        .logout:hover {
+            background-color: #c9302c;
+        }
+
+        /* Policy Application Form */
+        .policy-application {
+            background-color: #ffffff;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .policy-application h3 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .policy-application label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .policy-application input, .policy-application select, .policy-application textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .policy-application button {
+            padding: 12px 25px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+        }
+
+        .policy-application button:hover {
+            background-color: #218838;
+        }
+
+        
+            th, td {
+                padding: 10px;
+            }
+
+            .policy-application {
+                padding: 20px;
+            }
+
+            .policy-application button {
+                padding: 10px 20px;
+            }
+
+            #policies-container {
+                display: flex;
+                flex-wrap: wrap; /* Allows wrapping of items to the next line if there isn't enough space */
+                gap: 20px; /* Space between the policy cards */
+            }
+        
+            .policy-card {
+                background-color: #f9f9f9;
+                padding: 20px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                width: 250px; /* Width of each policy card */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+            }
+        
+            .policy-card a {
+                display: inline-block;
+                margin-top: 10px;
+                padding: 8px 16px;
+                background-color: #007BFF;
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+            }
+        
+            .policy-card a:hover {
+                background-color: #0056b3;
+            }   
+            
+            
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Heading */
+h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+   /* Claims Section */
+   .claims-list {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    margin-top: 20px;
+    width: 40%; /* Adjust width to a smaller value, you can change the percentage */
+    max-width: 600px; /* Optional: set a max width */
+ 
+}
+
+.claim {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.claim:last-child {
+    border-bottom: none;
+}
+
+.claim strong {
+    color: #333;
+}
+
+.claim-info {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: bold;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* No Claims Message */
+.no-claims {
+    color: #888;
+    font-size: 18px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .claims-list {
+        padding: 15px;
+    }
+
+    .claim {
+        padding-bottom: 12px;
+        margin-bottom: 12px;
+    }
+
+    .claim-info {
+        font-size: 14px;
+    }
+    
+    .no-claims {
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <h1>Fedha Insurance Management System</h1>
+
+    {% block content %}
+    {% if user.is_authenticated %}
+    <h1>Welcome, {{ user.username }}.</h1>
+        <!-- Your Dashboard content here -->
+    {% else %}
+       <p>Please log in to access your dashboard.</p>
+     {% endif %}
+        <h2>Policies Dashboard</h2>
+
+       <!-- Template where the admin is logged in -->
+
+{% if user.is_staff %}
+{% endif %}
+
+        <h3>Policies</h3>
+
+        <!-- Policies Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Policy Number</th>
+                    <th>Policy Holder</th>
+                    <th>Policy Type</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Premium Amount</th>
+                    <th>Coverage Amount</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for policy in policies %}
+                    <tr>
+                        <td>{{ policy.policy_number }}</td>
+                        <td>{{ user.username}}</td>
+                        <td>{{ policy.get_policy_type_display }}</td>
+                        <td>{{ policy.start_date }}</td>
+                        <td>{{ policy.end_date }}</td>
+                        <td>{{ policy.premium_amount }}</td>
+                        <td>{{ policy.coverage_amount }}</td>
+                        <td>{{ policy.status }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Apply for a Policy Section -->
+        <div class="policy-application">
+            <h3>Apply for a New Policy</h3>
+            <form method="POST" action="{% url 'apply_policy' %}">
+                {% csrf_token %}
+                <label for="policy_type">Policy Type</label>
+                <select id="policy_type" name="policy_type" required>
+                    <option value="">Select Policy Type</option>
+                    <option value="life">Life Insurance</option>
+                    <option value="health">Health Insurance</option>
+                    <option value="auto">Auto Insurance</option>
+                    <option value="home">Home Insurance</option>
+                    <option value="Liability">Liability Insurance</option>
+                    <option value="Flood">Flood Insurance</option>
+                    <option value="Property">Property Insurance</option>
+                    <option value="Critical">Critical Illness Insurance</option>
+                    <option value="Business">Business Insurance</option>
+
+                </select>
+
+                <label for="policy_holder_name">Policy Holder Name</label>
+                <input type="text" id="policy_holder_name" name="policy_holder_name" required>
+
+                <label for="start_date">Start Date</label>
+                <input type="date" id="start_date" name="start_date" required>
+
+                <label for="end_date">End Date</label>
+                <input type="date" id="end_date" name="end_date" required>
+
+                <label for="premium_amount">Premium Amount</label>
+                <input type="number" id="premium_amount" name="premium_amount" required>
+
+                <label for="coverage_amount">Coverage Amount</label>
+                <input type="number" id="coverage_amount" name="coverage_amount" required>
+
+                <label for="status">Policy Status</label>
+                <select id="status" name="status" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+
+                <button type="submit">Apply for Policy</button>
+            </form>
+        </div>
+
+    {% endblock %}
+
+  <!-- Display user policies -->
+
+<h2>Your Policies</h2>
+<div id="policies-container">
+    {% if policies %}
+        <div class="policies-row">
+            {% for policy in policies %}
+                <div class="policy-card">
+                    <strong>Policy Number:</strong> {{ policy.policy_number }}<br>
+                    <strong>Policy Holder:</strong> {{ user.username }}<br>
+                    <strong>Status:</strong> {{ policy.status }}<br>
+                    <!-- Link to the claim submission page -->
+                    <a href="{% url 'submit_claim' policy.id %}">Submit Claim</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>You do not have any policies yet.</p>
+    {% endif %}
+
+</div>
+
+            <script>
+                // JavaScript to dynamically populate policies table if needed
+            
+                // Fetch user policies after the page loads and display them
+                window.onload = function() {
+                    // You can use AJAX here to fetch policies dynamically if needed
+                    // But as per the code above, policies are already passed as context in the template.
+                };
+            </script>
+     </ul>
+     <h2>Your Claims</h2>
+     <div class="container">
+         {% if claims %}
+        <ul>
+            <div class="claims-list">
+                {% for claim in claims %}
+                    <div class="claim">
+                        <div class="claim-info">
+                            <li>
+                            <strong>Claim ID:</strong> {{ claim.id }}<br>
+                            <strong>Policy Number:</strong> {{ claim.policy.policy_number }}<br>
+                            <strong>Status:</strong> {{ claim.get_status_display }}<br>
+                            <strong>Date Submitted:</strong> {{ claim.date_submitted }}<br>
+                            
+                            </li>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </ul>    
+        {% else %}
+            <p class="no-claims">You haven't made any claims yet.</p>
+        {% endif %}
+    </div>  
+     
+    
+    
+    <!-- Logout Button -->
+    <a href="{% url 'user_logout' %}" class="logout">Logout</a>
+
+</body>
+</html>
+
+
+

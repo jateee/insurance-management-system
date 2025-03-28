@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>{{ title }}</title>  <!-- displays the title passed from the view -->
+   <style>
+    /* CSS to center the content */
+    body, html {
+        height: 100%; /* Ensure body takes full height of the viewport */
+        margin: 0; /* Remove default margin */
+        display: flex; /* Use flexbox for centering */
+        justify-content: center; /* Horizontally center */
+        align-items: center; /* Vertically center */
+        font-family: Arial, sans-serif; /* Optional: Set font */
+        background-color: #f4f4f4; /* Optional: Background color */
+        
+    }
+    
+    .container {
+        text-align: center; /* Center text inside the container */
+        padding: 20px; /* Add some padding */
+        background-color: white; /* Optional: Add background color */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add box shadow */
+        border-radius: 8px; /* Optional: Round the corners */
+    }
+
+    h1 {
+        color: #007BFF; /* Set a color for the title */
+    }
+    h2 {
+        color: #007BFF; /* Set a color for the title */
+    }
+
+    p {
+        color: #007BFF; /* Set a color for the paragraph */
+    }
+    a {
+        color: #333; 
+    }
+
+   </style>
+</head>
+   <body>
+      <div class="container">
+        <h1> HOMEPAGE</h1>
+        <h2>{{welcome_message}}</h2>
+ 
+       <p>CONTENTS </p>
+       <a href="{% url 'register' %}"> Register</a>
+
+       <br> <br>
+       
+       <a href="{% url 'login' %}"> login</a>
+
+      </div>
+           
+   </body>
+</html>

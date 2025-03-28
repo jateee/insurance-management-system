@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Claim</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">  <!-- Optional: If you want to link a CSS file for styling -->
+</head>
+<body>
+    <div class="container">
+        <h2>Review Claim: #{{ claim.id }}</h2>
+
+        <div class="claim-details">
+            <p><strong>Policy Number:</strong> {{ claim.policy.policy_number }}</p>
+            <p><strong>Claim Amount:</strong> ${{ claim.claim_amount }}</p>
+            <p><strong>Claim Reason:</strong> {{ claim.claim_reason }}</p>
+            <p><strong>Status:</strong> {{ claim.get_status_display }}</p>
+        </div>
+
+        <form method="POST" class="claim-action-form">
+            {% csrf_token %}
+            <button type="submit" name="action" value="approve" class="btn btn-approve">Approve</button>
+            <button type="submit" name="action" value="reject" class="btn btn-reject">Reject</button>
+        </form>
+
+        <p><a href="{% url 'dashboard' %}" class="back-to-dashboard">Back to Dashboard</a></p>
+    </div>
+
+    <script src="{% static 'scripts.js' %}"></script>  <!-- Optional: If you want to link a JS file -->
+</body>
+</html>
+
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+       <html dir="ltr" lang="en">
+<head>
+       <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+       /* Ensure the body takes up the full height of the viewport */
+       body, html {
+           height: 100%;
+           margin: 0;
+           font-family: Arial, sans-serif;
+           background-color: #f4f4f4; /* Background color for the page */
+           display: flex;
+           justify-content: center; /* Center horizontally */
+           align-items: center; /* Center vertically */
+       }
+
+       .login-container {
+           background-color: white;
+           padding: 40px;
+           border-radius: 8px;
+           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+           width: 100%;
+           max-width: 400px; /* Optional: Max width of the login form */
+       }
+
+       h1 {
+           text-align: center;
+           margin-bottom: 20px;
+           color: #007BFF;
+       }
+
+       form {
+           display: flex;
+           flex-direction: column;
+       }
+
+       input {
+           padding: 10px;
+           margin-bottom: 10px;
+           border: 1px solid #ccc;
+           border-radius: 4px;
+           font-size: 14px;
+       }
+
+       button {
+           padding: 10px;
+           background-color: #4CAF50;
+           color: white;
+           border: none;
+           border-radius: 4px;
+           font-size: 16px;
+           cursor: pointer;
+       }
+
+       button:hover {
+           background-color: #45a049;
+       }
+
+       .error-message {
+           color: red;
+           text-align: center;
+           font-size: 14px;
+       }
+   </style>
+</head>
+<body>
+
+       <div class="login-container">
+
+       <h1> Login To Fedha </h1>
+
+       <form method="POST" autocomplete="off">
+
+              {% csrf_token %} 
+
+              {{Loginform.as_p}}
+
+              <input type="submit" value="Login">
+        </form>
+        {% if form.errors %}
+        <div class="error-message">
+            Please check your username and password.
+        </div>
+    {% endif %}
+</div>
+
+</body>
+
+</html>
+
