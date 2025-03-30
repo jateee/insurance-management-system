@@ -1,82 +1,141 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-       <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Register</title>
-              <style>
-                     /* Ensure the body takes up the full height of the viewport */
-                     body, html {
-                         height: 100%;
-                         margin: 0;
-                         font-family: Arial, sans-serif;
-                         background-color: #f4f4f4; /* Background color for the page */
-                         display: flex;
-                         justify-content: center; /* Center horizontally */
-                         align-items: center; /* Center vertically */
-                     }
-             
-                     .register-container {
-                         background-color: white;
-                         padding: 40px;
-                         border-radius: 8px;
-                         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
-                         width: 100%;
-                         max-width: 400px; /* Optional: Max width of the login form */
-                     }
-             
-                     h2 {
-                         text-align: center;
-                         margin-bottom: 20px;
-                         color: #007BFF;
-                     }
-             
-                     form {
-                         display: flex;
-                         flex-direction: column;
-                     }
-             
-                     input {
-                         padding: 10px;
-                         margin-bottom: 10px;
-                         border: 1px solid #ccc;
-                         border-radius: 4px;
-                         font-size: 14px;
-                     }
-             
-                     button {
-                         padding: 10px;
-                         background-color: #4CAF50;
-                         color: white;
-                         border: none;
-                         border-radius: 4px;
-                         font-size: 16px;
-                         cursor: pointer;
-                     }
-             
-                     button:hover {
-                         background-color: #45a049;
-                     }
-             
+    <head>
+        <link href="path/to/file/uni-form.css" media="all" rel="stylesheet"/>
+        <link href="path/to/file/default.uni-form.css" media="all" rel="stylesheet"/>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        
+        <style>
+            /* Ensure the body takes up the full height of the viewport */
+            body, html {
+                height: 100%;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4; /* Background color for the page */
+                display: flex;
+                justify-content: center; /* Center horizontally */
+                align-items: center; /* Center vertically */
+            }
+    
+            .register-container {
+                background-color: white;
+                padding: 40px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+                width: 100%;
+                max-width: 400px; /* Optional: Max width of the login form */
+            }
+    
+            h2 {
+                text-align: center;
+                margin-bottom: 20px;
+                color: #007BFF;
+            }
+    
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 15px; 
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+            }
+
+            label {
+                margin-bottom: 5px; /* Space between label and input field */
+                font-weight: None;
+            }
+    
+            input {
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+                width: 100%; /* Ensures the input fields take full width */
+            }
+    
+            button {
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+    
+            button:hover {
+                background-color: #45a049;
+            }
+
+            .error-message {
+                color: red;
+                font-size: 0.9em;
+            }
+
+            /* Style for error messages to make them stand out */
+            .form-group .error-message {
+                font-size: 0.9em;
+                color: red;
+                margin-top: -10px;
+            }
+
+        </style> 
+    </head>  
+    
+    {% load crispy_forms_tags %}            
+    <body>  
+        {% load crispy_forms_tags %} 
+        
+        <div class="register-container">
+            <h2> REGISTER</h2>
+            <form method="POST" autocomplete="off">
+                <div class="form-group">
+                    {% csrf_token %} 
+
+                    <div>
+                        <label for="username">Username</label>
+                        {{ registerform.username }}
+                    </div>
                     
-                 </style> 
-                </head>   
-  <body>     
-    
-     <div class="register-container">
+                    <div>
+                        <label for="email">Email</label>
+                        {{ registerform.email }}
+                    </div>
+                    
+                    <div>
+                        <label for="password1">Password</label>
+                        {{ registerform.password1 }}
+                        {% if registerform.password1.errors %}
+                            <div class="error-message">
+                                {% for error in registerform.password1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div>
+                        <label for="password2">Confirm Password</label>
+                        {{ registerform.password2 }}
+                        {% if registerform.password2.errors %}
+                            <div class="error-message">
+                                {% for error in registerform.password2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
 
-       <h2> Register Here!</h2>
-
-       <form method="POST" autocomplete="off">
-
-              {% csrf_token %} 
-
-              {{registerform.as_p}}
-
-              <input type="submit" value="Register">
-
-       </form> 
-      
-    
+                    <input type="submit" value="Register">
+                </div>
+            </form> 
+        </div>
     </body>
 </html>

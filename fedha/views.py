@@ -59,9 +59,9 @@ def register (request):
         
 
 
-    context = {'registerform':form} 
+    context = {'registerform': form} 
 
-    return render(request, 'fedha/register.html',context=context)
+    return render(request, 'fedha/register.html', context=context)
 
 
 
@@ -225,7 +225,7 @@ def apply_policy(request):
         policy_holder_name = request.POST['policy_holder_name']
         start_date = request.POST['start_date']
         end_date = request.POST['end_date']
-        premium_amount = request.POST['premium_amount']
+        premium_amount = float(request.POST['premium_amount'])
         coverage_amount = request.POST['coverage_amount']
         status = request.POST['status']
         

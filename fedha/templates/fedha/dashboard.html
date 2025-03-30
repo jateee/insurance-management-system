@@ -246,31 +246,15 @@ a:hover {
     text-decoration: underline;
 }
 
-/* No Claims Message */
-.no-claims {
-    color: #888;
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Media Queries */
-@media screen and (max-width: 768px) {
-    .claims-list {
+ /* Media Queries */
+ @media screen and (max-width: 768px) {
+    .policy-card, .claim-card {
+        width: 100%;
         padding: 15px;
     }
 
-    .claim {
-        padding-bottom: 12px;
-        margin-bottom: 12px;
-    }
-
-    .claim-info {
-        font-size: 14px;
-    }
-    
-    .no-claims {
-        font-size: 16px;
+    .policy-application {
+        padding: 20px;
     }
 }
 
@@ -426,7 +410,7 @@ a:hover {
             </div>
         </ul>    
         {% else %}
-            <p class="no-claims">You haven't made any claims yet.</p>
+            <p class="no-claims">You haven't made any claims.</p>
         {% endif %}
     </div>  
      

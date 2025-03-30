@@ -6,6 +6,7 @@ import string
 # Create your models here.
 # models.py
 
+
 class Policy(models.Model):
     POLICY_TYPE_CHOICES = [
         ('life', 'Life Insurance'),
