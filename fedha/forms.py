@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 from django import forms
+from .validators import validate_username_one_or_two_names 
 
 from .models import Claim
 
@@ -10,15 +11,35 @@ from django.forms.widgets import PasswordInput, TextInput
 
 from .models import Policy
 
+from .models import User  # Assuming you have a custom user model
 
+def validate_username_one_or_two_names(value):
+    # Custom validation logic if required
+    pass
 #Create/Register a user(Model Form)
 class CreateUserForm(UserCreationForm):
+    username = forms.CharField(
+        max_length=100,
+        validators=[validate_username_one_or_two_names],  # Apply the custom validator here
+    )
+
+    first_name = forms.CharField(
+        max_length=100,
+        required=True,  # You can adjust this depending on whether you want it to be optional or not
+    )
+    
+    last_name = forms.CharField(
+        max_length=100,
+        required=True,  # You can adjust this depending on whether you want it to be optional or not
+    )
+
+
 
     class Meta:
-
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = [ 'first_name', 'last_name', 'username', 'email', 'password1', 'password2']
 
+  
 
 # - Authenticate a user
 

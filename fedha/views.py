@@ -1,5 +1,7 @@
 from django.contrib.auth.forms import AuthenticationForm
 
+from django.contrib.auth import login
+
 from django.shortcuts import render,redirect, get_object_or_404
 
 from .forms import CreateUserForm, LoginForm
@@ -9,6 +11,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.decorators import user_passes_test
 
 from django import forms
+
+from .forms import CreateUserForm
 
 from .models import Policy, Claim
 
@@ -45,23 +49,19 @@ def homepage (request):
 
     return render(request, 'fedha/index.html', context)
 
-def register (request):
 
-    form = CreateUserForm()
-
+def register(request):
     if request.method == "POST":
         form = CreateUserForm(request.POST)
-
         if form.is_valid():
-            form.save()
+            user = form.save()  # Save the user
+            
+            return redirect("login")  # Redirect to the login page after successful registration
+        else:
+            return render(request, 'fedha/register.html', {'registerform': form})
 
-            return redirect("login")
-        
-
-
-    context = {'registerform': form} 
-
-    return render(request, 'fedha/register.html', context=context)
+    form = CreateUserForm()  # Initialize an empty form on GET request
+    return render(request, 'fedha/register.html', {'registerform': form})
 
 
 

@@ -100,17 +100,39 @@
                     {% csrf_token %} 
 
                     <div>
-                        <label for="username">Username</label>
+                        <label for="id_first_name">First Name</label>
+                        {{ registerform.first_name }}
+                        {% for error in registerform.first_name.errors %}
+                        <div class="error-message">{{ error }}</div>  <!-- Display errors -->
+                    {% endfor %}
+                    </div>
+
+                    <div>
+                        <label for="id_last_name">Last Name</label>
+                        {{ registerform.last_name }}
+                        {% for error in registerform.second_name.errors %}
+                        <div class="error-message">{{ error }}</div>  <!-- Display errors -->
+                    {% endfor %}
+                    </div>
+
+                    <div>
+                        <label for="id_username">Username</label>
                         {{ registerform.username }}
+                        {% for error in registerform.username.errors %}
+                        <div class="error-message">{{ error }}</div>  <!-- Display errors for username -->
+                    {% endfor %}
                     </div>
                     
                     <div>
-                        <label for="email">Email</label>
+                        <label for="id_email">Email</label>
                         {{ registerform.email }}
+                        {% for error in registerform.email.errors %}
+                        <div class="error-message">{{ error }}</div>  <!-- Display errors for email -->
+                    {% endfor %}
                     </div>
                     
                     <div>
-                        <label for="password1">Password</label>
+                        <label for="id_password1">Password</label>
                         {{ registerform.password1 }}
                         {% if registerform.password1.errors %}
                             <div class="error-message">
@@ -122,7 +144,7 @@
                     </div>
                     
                     <div>
-                        <label for="password2">Confirm Password</label>
+                        <label for="id_password2">Confirm Password</label>
                         {{ registerform.password2 }}
                         {% if registerform.password2.errors %}
                             <div class="error-message">
