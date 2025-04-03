@@ -33,7 +33,6 @@ from django.core.exceptions import ValidationError
 from django.core.mail import send_mail
 from django.conf import settings
 from .forms import ContactForm
-
 # Authentication models and functions
 
 from django.contrib.auth.models import auth
@@ -410,6 +409,8 @@ def admin_update_claim_status(request, claim_id):
     return render(request, 'admin_update_claim_status.html', {'claim': claim})
 
 
+
+
 def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
@@ -421,5 +422,4 @@ def contact_view(request):
         form = ContactForm()
 
     return render(request, 'contact/contact_form.html', {'form': form})
-
 

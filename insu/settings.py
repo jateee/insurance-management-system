@@ -15,6 +15,10 @@ import os
 import django_heroku
 import dj_database_url
 
+
+from dotenv import load_dotenv
+load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -41,7 +45,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fedha',
+    'insu',
     'crispy_forms',
+
     
 ]
 
@@ -61,6 +67,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR / 'templates')
+        ],
+          'DIRS': [
+            BASE_DIR / 'templates',  # or another path if your templates are stored elsewhere
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -125,6 +134,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Ensure this directory exists
+]
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_heroku.settings(locals())
 
@@ -133,4 +145,34 @@ django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# settings.py
 
+# Email settings for sending emails
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'  # Change to your email provider
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'calvinochieng2021@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv(os.getenv('EMAIL_HOST_PASSWORD', 'chlh wfne wdqz dbwz'))
+CONTACT_EMAIL = 'calvinochieng2021@gmail.com'  # The email where contact forms are sent
+
+
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django.template': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
