@@ -414,12 +414,13 @@ def contact_view(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            # Process the form data (e.g., send email, save to database, etc.)
-            # You can redirect to a success page or show a success message here
-            return render(request, 'contact/thanks.html')
+            form.save()  # Save the contact message to the database
+            messages.success(request, "Your message has been sent successfully!")
+            return redirect('thanks')  # Redirect to a 'thank you' page
     else:
         form = ContactForm()
 
     return render(request, 'contact/contact_form.html', {'form': form})
 
-
+def thanks_view(request):
+    return render(request, 'contact/thanks.html') 

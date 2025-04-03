@@ -27,9 +27,10 @@ class PolicyAdmin(admin.ModelAdmin):
 
 admin.site.register(Policy, PolicyAdmin)
 
-# ContactMessage Admin (Check if 'created_at' exists in the model)
-class ContactMessageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'message', 'created_at')  # Ensure 'created_at' field exists in the model
-    search_fields = ('name', 'email', 'message')
 
-admin.site.register(ContactMessage, ContactMessageAdmin)
+
+
+@admin.register(ContactMessage)
+class ContactMessageAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'message', 'created_at')  # Fields to display in the admin
+    search_fields = ('name', 'email', 'message')  # Searchable fields in the admin panel

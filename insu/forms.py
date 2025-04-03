@@ -13,6 +13,7 @@ from .models import Policy
 
 from .models import User  # Assuming you have a custom user model
 
+from .models import ContactMessage
 def validate_username_one_or_two_names(value):
     # Custom validation logic if required
     pass
@@ -97,3 +98,9 @@ class ContactForm(forms.Form):
     email = forms.EmailField(label='Your Email')
     message = forms.CharField(widget=forms.Textarea, label='Your Message')
 
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ['name', 'email', 'message']

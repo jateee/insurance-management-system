@@ -1,6 +1,8 @@
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django import forms
+from .models import ContactMessage
 
 from django import forms
 from .validators import validate_username_one_or_two_names 
@@ -97,3 +99,9 @@ class ContactForm(forms.Form):
     email = forms.EmailField(label='Your Email')
     message = forms.CharField(widget=forms.Textarea, label='Your Message')
 
+
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = ContactMessage
+        fields = ['name', 'email', 'message']

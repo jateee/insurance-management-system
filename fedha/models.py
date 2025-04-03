@@ -97,14 +97,10 @@ class ContactMessage(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     message = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)  # Automatically set when the object is created
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"Message from {self.name}"
-
-
-
-
+        return f"Message from {self.name} at {self.created_at}"
 
 class ContactForm(forms.ModelForm):
     class Meta:
