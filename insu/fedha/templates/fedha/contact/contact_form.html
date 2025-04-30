@@ -1,0 +1,151 @@
+<!-- templates/contact/contact_form.html -->
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: left;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #1E88E5; /* Blue color */
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        form label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+            color: #333;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+            background-color: #f7f9fc; /* Light background for inputs */
+        }
+
+        form input:focus, form textarea:focus {
+            border-color: #1E88E5; /* Blue border on focus */
+            outline: none;
+        }
+
+        form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background-color: #1E88E5; /* Blue button */
+            color: white;
+            padding: 14px 24px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #1565C0; /* Darker blue on hover */
+        }
+
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Contact Us</h1>
+        </header>
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Name Field -->
+            <div class="form-group">
+                <label for="id_name">Your Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="error">
+                        {% for error in form.name.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="id_email">Your email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                    <div class="error">
+                        {% for error in form.email.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Message Field -->
+            <div class="form-group">
+                <label for="id_message">Your Message</label>
+                {{ form.message }}
+                {% if form.message.errors %}
+                    <div class="error">
+                        {% for error in form.message.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

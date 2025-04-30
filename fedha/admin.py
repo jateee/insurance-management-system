@@ -29,8 +29,8 @@ admin.site.register(Policy, PolicyAdmin)
 
 
 
+
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'message', 'created_at')  # Fields to display in the admin
     search_fields = ('name', 'email', 'message')  # Searchable fields in the admin panel
-# Register your models here

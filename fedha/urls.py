@@ -33,15 +33,10 @@ urlpatterns = [
     path('review-claim/<int:claim_id>/', views.review_claim, name='review_claim'),
 
 
-    path('admin/', admin.site.urls),
-
-    path('dashboard/', dashboard_view, name='dashboard'),
-    
-
-
     path('dashboard/', dashboard_view, name='dashboard'),
     path('contact/', views.contact_view, name='contact_form'),
     path('thanks/', views.thanks_view, name='thanks'),
+    path('about/', views.about_us, name='about_us'),
     
     ]
 

@@ -1,8 +1,10 @@
 from django.db import models
+from django.contrib import admin
 from django import forms
 from django.contrib.auth.models import User
 import random
 import string
+
 
 # Create your models here.
 # models.py
@@ -35,7 +37,7 @@ class Policy(models.Model):
 
     ]
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='fedha_policies')  # Link policy to user
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='insu_policies')  # Link policy to user
     policy_number = models.CharField(max_length=255)
     policy_holder_name = models.CharField(max_length=255)
     policy_type = models.CharField(max_length=50, choices=POLICY_TYPE_CHOICES)
@@ -77,7 +79,7 @@ class Claim(models.Model):
         ('rejected', 'Rejected'),
     ]
 
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='fedha_claims')
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, related_name='insu_claims')
     policy = models.ForeignKey(Policy, on_delete=models.CASCADE, related_name='claims')
     claim_amount = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(choices=CLAIM_STATUS_CHOICES, default='pending', max_length=10)
@@ -89,8 +91,6 @@ class Claim(models.Model):
     def __str__(self):
         return f"Claim {self.id} for Policy {self.policy.policy_number}"
     
-
-
 
 
 class ContactMessage(models.Model):
@@ -106,6 +106,8 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
         fields = ['name', 'email', 'message']
+
+
 
 
 
