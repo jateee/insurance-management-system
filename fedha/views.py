@@ -12,11 +12,10 @@ from django.contrib.auth.decorators import user_passes_test
 
 from django import forms
 
-<<<<<<< HEAD:fedha/views.py
 from .forms import CreateUserForm
 
-=======
->>>>>>> 8433222 (Better):insu/fedha/views.py
+
+
 from .models import Policy, Claim
 
 from .forms import PolicyForm
@@ -61,24 +60,19 @@ def register(request):
     if request.method == "POST":
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Save the user
-            
-            return redirect("login")  # Redirect to the login page after successful registration
-        else:
-            return render(request, 'fedha/register.html', {'registerform': form})
+            user = form.save()
+            return redirect("login")  # Redirect after successful registration
+    else:
+        form = CreateUserForm()  # Initialize empty form on GET
 
-<<<<<<< HEAD:fedha/views.py
-    form = CreateUserForm()  # Initialize an empty form on GET request
-    return render(request, 'fedha/register.html', {'registerform': form})
-=======
-            return redirect("login")
-        
+    # Common render for both GET and invalid POST
+    context = {'registerform': form}
+    return render(request, 'fedha/register.html', context)
 
 
     context = {'registerform': form} 
 
     return render(request, 'fedha/register.html', context=context)
->>>>>>> 8433222 (Better):insu/fedha/views.py
 
 
 
@@ -435,9 +429,7 @@ def contact_view(request):
 
     return render(request, 'contact/contact_form.html', {'form': form})
 
-<<<<<<< HEAD:fedha/views.py
+
 def thanks_view(request):
     return render(request, 'contact/thanks.html') 
-=======
 
->>>>>>> 8433222 (Better):insu/fedha/views.py

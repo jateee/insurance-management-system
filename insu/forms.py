@@ -93,7 +93,6 @@ class PolicyForm(forms.ModelForm):
 
 
 
-<<<<<<< HEAD:insu/forms.py
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=100, label='Your Name')
     email = forms.EmailField(label='Your Email')
@@ -105,5 +104,3 @@ class ContactForm(forms.ModelForm):
     class Meta:
         model = ContactMessage
         fields = ['name', 'email', 'message']
-=======
->>>>>>> 8433222 (Better):insu/fedha/forms.py
