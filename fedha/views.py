@@ -12,8 +12,11 @@ from django.contrib.auth.decorators import user_passes_test
 
 from django import forms
 
+<<<<<<< HEAD:fedha/views.py
 from .forms import CreateUserForm
 
+=======
+>>>>>>> 8433222 (Better):insu/fedha/views.py
 from .models import Policy, Claim
 
 from .forms import PolicyForm
@@ -64,8 +67,18 @@ def register(request):
         else:
             return render(request, 'fedha/register.html', {'registerform': form})
 
+<<<<<<< HEAD:fedha/views.py
     form = CreateUserForm()  # Initialize an empty form on GET request
     return render(request, 'fedha/register.html', {'registerform': form})
+=======
+            return redirect("login")
+        
+
+
+    context = {'registerform': form} 
+
+    return render(request, 'fedha/register.html', context=context)
+>>>>>>> 8433222 (Better):insu/fedha/views.py
 
 
 
@@ -422,5 +435,9 @@ def contact_view(request):
 
     return render(request, 'contact/contact_form.html', {'form': form})
 
+<<<<<<< HEAD:fedha/views.py
 def thanks_view(request):
     return render(request, 'contact/thanks.html') 
+=======
+
+>>>>>>> 8433222 (Better):insu/fedha/views.py

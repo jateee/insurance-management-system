@@ -45,9 +45,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'fedha',
+<<<<<<< HEAD:insu/settings.py
     'insu',
     'crispy_forms',
 
+=======
+    'crispy_forms',
+>>>>>>> 8433222 (Better):insu/insu/settings.py
     
 ]
 
@@ -69,9 +73,12 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR / 'templates')
         ],
+<<<<<<< HEAD:insu/settings.py
           'DIRS': [
             BASE_DIR / 'templates',  # or another path if your templates are stored elsewhere
         ],
+=======
+>>>>>>> 8433222 (Better):insu/insu/settings.py
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -134,11 +141,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+<<<<<<< HEAD:insu/settings.py
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATICFILES_DIRS = [
     BASE_DIR / "static",  # Make sure this folder exists
 ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+=======
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+>>>>>>> 8433222 (Better):insu/insu/settings.py
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 django_heroku.settings(locals())
 
@@ -147,6 +158,7 @@ django_heroku.settings(locals())
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+<<<<<<< HEAD:insu/settings.py
 # settings.py
 
 # Email settings for sending emails
@@ -161,4 +173,6 @@ CONTACT_EMAIL = 'calvinochieng2021@gmail.com'  # The email where contact forms a
 
 
 
+=======
+>>>>>>> 8433222 (Better):insu/insu/settings.py
 

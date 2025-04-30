@@ -32,6 +32,13 @@ urlpatterns = [
     
     path('review-claim/<int:claim_id>/', views.review_claim, name='review_claim'),
 
+<<<<<<< HEAD:fedha/urls.py
+=======
+    path('admin/', admin.site.urls),
+
+    path('dashboard/', dashboard_view, name='dashboard'),
+    
+>>>>>>> 8433222 (Better):insu/fedha/urls.py
 
     path('dashboard/', dashboard_view, name='dashboard'),
     path('contact/', views.contact_view, name='contact_form'),
